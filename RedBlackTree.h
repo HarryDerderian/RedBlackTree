@@ -6,10 +6,10 @@ using namespace std;
 class Node 
 {
 public:
-	const int* data;
+	const int* data; // replace with generic type later
 	Node* right;
 	Node* left;
-	char color; // red: 1, black: 0
+	char color; // closest to 1 bit stores color, red: 1, black: 0
 	Node() : data(nullptr), right(nullptr),
 		left(nullptr), color(1) {};
 	Node(const int& element) : data(&element), 
