@@ -93,7 +93,7 @@ Node* RedBlackTree::detach(Node* current, const int& data)
 
 int RedBlackTree::max() 
 {
-	if (rootNode == nullptr) return 0;
+	if (rootNode == nullptr) return 0; // maybe throw exception or return nullptr
 
 	Node* current = rootNode;
 	while (current->right != nullptr)
@@ -103,7 +103,7 @@ int RedBlackTree::max()
 
 int RedBlackTree::min() 
 {
-	if (rootNode == nullptr) return 0;
+	if (rootNode == nullptr) return 0;  // maybe throw exception or return nullptr
 
 	Node* current = rootNode;
 	while (current->left != nullptr)
