@@ -23,7 +23,7 @@ class RedBlackTree
 public:
 	RedBlackTree() : totalNodes(0), rootNode(nullptr) {};
 	RedBlackTree(const int& data) : totalNodes(1), 
-							 rootNode(new Node(data)) {};
+				rootNode(new Node(data)) {};
 	bool contains(const int&);
 	bool add(const int&);
 	bool remove(const int&);
