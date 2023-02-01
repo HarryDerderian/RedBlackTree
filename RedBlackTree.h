@@ -3,42 +3,45 @@
 #include<vector>
 using namespace std;
 
-class Node 
+template <class T>
+ class Node 
 {
-public:
-	const int* data; // replace with generic type later
+	const T* data;
 	Node* right;
 	Node* left;
-	char color; // closest to 1 bit stores color, red: 1, black: 0
+	char color; // red: 1, black: 0
 	Node() : data(nullptr), right(nullptr),
 		left(nullptr), color(1) {};
-	Node(const int& element) : data(&element), 
+	Node(const T& element) : data(&element), 
 		right(nullptr), left(nullptr), color(1) {};
-
 	~Node() {};
+
+	template <class E>
+	friend class RedBlackTree;
 };
 
+template <class T>
 class RedBlackTree
 {
 public:
 	RedBlackTree() : totalNodes(0), rootNode(nullptr) {};
-	RedBlackTree(const int& data) : totalNodes(1), 
-				rootNode(new Node(data)) {};
-	bool contains(const int&);
-	bool add(const int&);
-	bool remove(const int&);
-	int max();
-	int min();
+	RedBlackTree(const T& data) : totalNodes(1), 
+							 rootNode(new Node<T>(data)) {};
+	bool contains(const T&);
+	bool add(const T&);
+	bool remove(const T&);
+	T max();
+	T min();
 	int size();
-	vector<int>* inOrder();
+	vector<T>* inOrder();
 
 private:
 	int totalNodes;
-	Node* rootNode;
-	Node* insert(Node*, const int&);
-	void inOrderTraversal(const Node*, vector<int>&);
-	Node* inOrderSuccessor(Node*);
-	Node* detach(Node*, const int&);
-	Node* balance(Node*);
+	Node<T>* rootNode;
+	Node<T>* insert(Node<T>*, const T&);
+	void inOrderTraversal(const Node<T>*, vector<T>&);
+	Node<T>* inOrderSuccessor(Node<T>*);
+	Node<T>* detach(Node<T>*, const T&);
+	Node<T>* balance(Node<T>*);
 };
 #endif
