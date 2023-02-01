@@ -1,6 +1,6 @@
 #include "RedBlackTree.h"
 
-template <class T>
+template <typename T>
 Node<T>* RedBlackTree<T>::balance(Node<T>* node)
 {
 	// parent is red
@@ -10,7 +10,7 @@ Node<T>* RedBlackTree<T>::balance(Node<T>* node)
 	return rootNode;
 }
 
-template <class T>
+template <typename T>
 bool RedBlackTree<T>::add(const T& data)
 {
 	int oldAmount = totalNodes;
@@ -18,7 +18,7 @@ bool RedBlackTree<T>::add(const T& data)
 	return oldAmount != totalNodes;
 }
 
-template <class T>
+template <typename T>
 Node<T>* RedBlackTree<T>::insert(Node<T>* current, const T& data)
 {
 	if (current == nullptr)
@@ -37,7 +37,7 @@ Node<T>* RedBlackTree<T>::insert(Node<T>* current, const T& data)
 	return current;
 }
 
-template <class T>
+template <typename T>
 bool RedBlackTree<T>::remove(const T& data)
 {
 	int oldAmount = totalNodes;
@@ -45,7 +45,7 @@ bool RedBlackTree<T>::remove(const T& data)
 	return oldAmount != totalNodes;
 }
 
-template <class T>
+template <typename T>
 Node<T>* RedBlackTree<T>::inOrderSuccessor(Node<T>* current)
 {
 	current = current->right;
@@ -53,8 +53,8 @@ Node<T>* RedBlackTree<T>::inOrderSuccessor(Node<T>* current)
 		current = current->left;
 	return current;
 }
-/*
-template <class T>
+
+template <typename T>
 Node<T>* RedBlackTree<T>::detach(Node<T>* current, const T& data)
 {
 	if (current == nullptr) return nullptr;
@@ -76,14 +76,14 @@ Node<T>* RedBlackTree<T>::detach(Node<T>* current, const T& data)
 		else if (current->left)
 		{
 			totalNodes--;
-			Node* temp = current;
+			Node<T>* temp = current;
 			current = current->left;
 			delete temp;
 		}
 		else if (current->right)
 		{
 			totalNodes--;
-			Node* temp = current;
+			Node<T>* temp = current;
 			current = current->right;
 			delete temp;
 		}
@@ -96,9 +96,9 @@ Node<T>* RedBlackTree<T>::detach(Node<T>* current, const T& data)
 	}
 
 	return current;
-}*/
+}
 
-template <class T>
+template <typename T>
 T RedBlackTree<T>::max()
 {
 	if (rootNode == nullptr) return 0; // maybe throw exception or return nullptr
@@ -109,7 +109,7 @@ T RedBlackTree<T>::max()
 	return *current->data;
 }
 
-template <class T>
+template <typename T>
 T RedBlackTree<T>::min()
 {
 	if (rootNode == nullptr) return 0;  // maybe throw exception or return nullptr
@@ -120,7 +120,7 @@ T RedBlackTree<T>::min()
 	return *current->data;
 }
 
-template <class T>
+template <typename T>
 bool RedBlackTree<T>::contains(const T& data)
 {
 	Node<T>* current = rootNode;
@@ -131,15 +131,15 @@ bool RedBlackTree<T>::contains(const T& data)
 	return current != nullptr;
 }
 
-template <class T>
+template <typename T>
 vector<T>* RedBlackTree<T>::inOrder()
 {
-	vector<T>* orderedData = new vector<int>();
+	vector<T>* orderedData = new vector<T>();
 	inOrderTraversal(rootNode, *orderedData);
 	return orderedData;
 }
 
-template <class T>
+template <typename T>
 void RedBlackTree<T>::inOrderTraversal(const Node<T>* current, vector<T>& vec)
 {
 	if (current == nullptr) return;
@@ -147,7 +147,5 @@ void RedBlackTree<T>::inOrderTraversal(const Node<T>* current, vector<T>& vec)
 	vec.push_back(*current->data);
 	inOrderTraversal(current->right, vec);
 }
-template <class T>
+template <typename T>
 int RedBlackTree<T>::size() { return totalNodes; }
-
-

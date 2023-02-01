@@ -3,30 +3,30 @@
 #include<vector>
 using namespace std;
 
-template <class T>
- class Node 
+template <typename T>
+class Node 
 {
 	const T* data;
-	Node* right;
-	Node* left;
+	Node<T>* right;
+	Node<T>* left;
 	char color; // red: 1, black: 0
 	Node() : data(nullptr), right(nullptr),
 		left(nullptr), color(1) {};
-	Node(const T& element) : data(&element), 
+	Node(const T& element) : data(&element),
 		right(nullptr), left(nullptr), color(1) {};
 	~Node() {};
 
-	template <class E>
+	template <typename T>
 	friend class RedBlackTree;
 };
 
-template <class T>
+template <typename T>
 class RedBlackTree
 {
 public:
 	RedBlackTree() : totalNodes(0), rootNode(nullptr) {};
-	RedBlackTree(const T& data) : totalNodes(1), 
-							 rootNode(new Node<T>(data)) {};
+	RedBlackTree(const T& data) : totalNodes(1),
+		rootNode(new Node<T>(data)) {};
 	bool contains(const T&);
 	bool add(const T&);
 	bool remove(const T&);
