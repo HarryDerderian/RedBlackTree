@@ -3,6 +3,7 @@
 template <typename T>
 Node<T>* RedBlackTree<T>::balance(Node<T>* node)
 {
+	// TO DO
 	// parent is red
 		// parent has no sibling
 		// parent sibling is black
