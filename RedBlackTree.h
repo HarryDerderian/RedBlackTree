@@ -15,7 +15,6 @@ class Node
 	Node(const T& element) : data(&element),
 		right(nullptr), left(nullptr), color(1) {};
 	~Node() {};
-
 	template <typename T>
 	friend class RedBlackTree;
 };
