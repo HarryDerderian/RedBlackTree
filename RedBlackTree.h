@@ -6,7 +6,8 @@ using namespace std;
 template <typename T>
 class Node 
 {
-	const T* data;
+	const T* data; // & or * 
+		      // what happens when object is altered outside of tree
 	Node<T>* right;
 	Node<T>* left;
 	char color; // red: 1, black: 0
