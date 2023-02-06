@@ -4,17 +4,16 @@
 using namespace std;
 
 template <typename T>
-class Node 
+class Node
 {
-	const T* data; // & or * 
-		      // what happens when object is altered outside of tree
+	const T* data;
+	char color; // red: r, black: b
 	Node<T>* right;
 	Node<T>* left;
-	char color; // red: 1, black: 0
 	Node() : data(nullptr), right(nullptr),
-		left(nullptr), color(1) {};
+		left(nullptr), color('r') {};
 	Node(const T& element) : data(&element),
-		right(nullptr), left(nullptr), color(1) {};
+		right(nullptr), left(nullptr), color('r') {};
 	~Node() {};
 	template <typename T>
 	friend class RedBlackTree;
@@ -39,9 +38,15 @@ private:
 	int totalNodes;
 	Node<T>* rootNode;
 	Node<T>* insert(Node<T>*, const T&);
-	void inOrderTraversal(const Node<T>*, vector<T>&);
+	Node<T>* recolor(Node<T>*);
 	Node<T>* inOrderSuccessor(Node<T>*);
 	Node<T>* detach(Node<T>*, const T&);
-	Node<T>* balance(Node<T>*);
+	Node<T>* balance(Node<T>*, const T&);
+	Node<T>* singleRight(Node<T>*);
+	Node<T>* singleLeft(Node<T>*);
+	Node<T>* doubleRightLeft(Node<T>*);
+	Node<T>* doubleLeftRight(Node<T>*);
+	Node<T>* rotateRecolor(Node<T>*,Node<T>*, Node<T>*);
+	void inOrderTraversal(const Node<T>*, vector<T>&);
 };
 #endif
