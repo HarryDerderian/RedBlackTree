@@ -44,7 +44,7 @@ Node<T>* RedBlackTree<T>::doubleLeftRight(Node<T>* root)
 
 template <typename T>
 Node<T>* RedBlackTree<T>::rotateRecolor(Node<T>* grandParent,
-										Node<T>* parent, Node<T>* child) 
+					Node<T>* parent, Node<T>* child) 
 {
 	if (*grandParent->data < *child->data)  // right leaning 
 		return *parent->data < *child->data ?
@@ -210,7 +210,7 @@ vector<T>* RedBlackTree<T>::inOrder(){
 
 template <typename T>
 void RedBlackTree<T>::inOrderTraversal(const Node<T>* current, 
-												vector<T>& vec){
+						vector<T>& vec){
 	if (current == nullptr) return;
 	inOrderTraversal(current->left, vec);
 	vec.push_back(*current->data);
